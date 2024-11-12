@@ -78,7 +78,7 @@ public class EmployeeController {
 		}
 
 		Employee emp = employeeMapper.unMap(dto);
-		Employee entity = employeeService.insert(emp);
+		Employee entity = employeeService.save(emp);
 		EmployeeDto returnDto = employeeMapper.map(entity);
 
 		return ResponseEntity.status(HttpStatus.CREATED).body(returnDto);
@@ -88,7 +88,7 @@ public class EmployeeController {
 	public ResponseEntity<EmployeeDto> update(@RequestBody EmployeeDto dto) {
 		log.debug("REST request to partial update Employee partially : {}", dto);
 
-		Employee currentEmp = employeeService.getByID(dto.getEmpId())
+		Employee currentEmp = employeeService.getById(dto.getEmpId())
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Entity not found"));
 		Employee emp = employeeMapper.unMap(dto, currentEmp);
 		Employee entity = employeeService.update(emp);
@@ -140,7 +140,7 @@ public class EmployeeController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
 		log.debug("REST request to delete Employee : {}", id);
-		if (!employeeService.getByID(id).isPresent()) {
+		if (!employeeService.getById(id).isPresent()) {
 			return ResponseEntity.noContent().build();
 		} else {
 

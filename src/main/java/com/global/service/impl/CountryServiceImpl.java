@@ -1,7 +1,9 @@
 package com.global.service.impl;
 
-import java.util.List;
+import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.global.entity.Country;
@@ -32,15 +34,21 @@ public class CountryServiceImpl implements CountryService {
 	}
 
 	@Override
-	public List<Country> findAll() {
+	public Page<Country> findAll(Pageable pageable) {
 		log.debug("Request to get all Countries");
-		return countryRepo.findAll();
+		return countryRepo.findAll(pageable);
 	}
 
 	@Override
 	public Country findById(Long id) {
 		log.debug("Request to get Country : {}", id);
 		return countryRepo.findById(id).orElse(null);
+	}
+
+	@Override
+	public Optional<Country> getById(Long id) {
+		log.debug("Request to Get Employee from cash : {}", id);
+		return Optional.of(countryRepo.getReferenceById(id));
 	}
 
 	@Override

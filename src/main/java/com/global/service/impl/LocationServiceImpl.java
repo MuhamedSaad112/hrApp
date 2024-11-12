@@ -1,6 +1,7 @@
 package com.global.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -40,6 +41,12 @@ public class LocationServiceImpl implements LocationService {
 	public Location findById(Long id) {
 		log.debug("Request to Get  location}", id);
 		return locationRepo.findById(id).orElse(null);
+	}
+
+	@Override
+	public Optional<Location> getById(Long id) {
+		log.debug("Request to Get Location from cash: {}", id);
+		return Optional.of(locationRepo.getReferenceById(id));
 	}
 
 	@Override

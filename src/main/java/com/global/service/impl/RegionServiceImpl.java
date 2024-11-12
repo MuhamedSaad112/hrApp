@@ -1,6 +1,7 @@
 package com.global.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -40,6 +41,12 @@ public class RegionServiceImpl implements RegionService {
 	public Region findById(Long id) {
 		log.debug("Request to get Region : {}", id);
 		return regionRepo.findById(id).orElse(null);
+	}
+
+	@Override
+	public Optional<Region> getById(Long id) {
+		log.debug("Request to Get Region from cash: {}", id);
+		return Optional.of(regionRepo.getReferenceById(id));
 	}
 
 	@Override

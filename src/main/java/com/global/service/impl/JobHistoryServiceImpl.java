@@ -1,7 +1,9 @@
 package com.global.service.impl;
 
-import java.util.List;
+import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.global.entity.JobHistory;
@@ -32,15 +34,21 @@ public class JobHistoryServiceImpl implements JobHistoryService {
 	}
 
 	@Override
-	public List<JobHistory> findAll() {
+	public Page<JobHistory> findAll(Pageable pageable) {
 		log.debug("Request to Get all jobHistories");
-		return historyRepo.findAll();
+		return historyRepo.findAll(pageable);
 	}
 
 	@Override
 	public JobHistory findById(Long id) {
 		log.debug("Request to Get jobHistory}", id);
 		return historyRepo.findById(id).orElse(null);
+	}
+
+	@Override
+	public Optional<JobHistory> getById(Long id) {
+		log.debug("Request to Get JobHistory from cash: {}", id);
+		return Optional.of(historyRepo.getReferenceById(id));
 	}
 
 	@Override

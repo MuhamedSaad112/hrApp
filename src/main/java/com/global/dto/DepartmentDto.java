@@ -1,5 +1,11 @@
 package com.global.dto;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import com.global.entity.Employee;
+import com.global.entity.Location;
+
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,5 +22,9 @@ public class DepartmentDto {
 
 	@NotEmpty
 	private String departmentName;
+
+	private Location location;
+
+	private Set<Employee> employees = new HashSet<>();
 
 }

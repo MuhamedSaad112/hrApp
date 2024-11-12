@@ -9,15 +9,12 @@ import com.global.entity.Employee;
 
 public interface EmployeeService {
 
-	// Get the "id" Employee from cash
-	public Optional<Employee> getByID(Long id);
-
 	// Get the "FirstName And LastName" Employee
 	Employee findByFirstNameAndLastNameOrderById(String firstName, String lastName);
 
 	// Save a Employee.
 
-	Employee insert(Employee Employee);
+	Employee save(Employee Employee);
 
 	// updates a Employee.
 
@@ -30,6 +27,9 @@ public interface EmployeeService {
 	// Get the "id" Employee
 
 	Employee findById(Long id);
+
+	// Get the "id" Employee from cash
+	public Optional<Employee> getById(Long id);
 
 	// Delete the "id" Employee.
 

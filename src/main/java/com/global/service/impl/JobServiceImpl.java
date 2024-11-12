@@ -1,7 +1,9 @@
 package com.global.service.impl;
 
-import java.util.List;
+import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.global.entity.Job;
@@ -32,15 +34,21 @@ public class JobServiceImpl implements JobService {
 	}
 
 	@Override
-	public List<Job> findAll() {
+	public Page<Job> findAll(Pageable pageable) {
 		log.debug("Request to Get list of jobs");
-		return jobRepo.findAll();
+		return jobRepo.findAll(pageable);
 	}
 
 	@Override
 	public Job findById(Long id) {
 		log.debug("Request to get job}", id);
 		return jobRepo.findById(id).orElse(null);
+	}
+
+	@Override
+	public Optional<Job> getById(Long id) {
+		log.debug("Request to Get Job from cash: {}", id);
+		return Optional.of(jobRepo.getReferenceById(id));
 	}
 
 	@Override

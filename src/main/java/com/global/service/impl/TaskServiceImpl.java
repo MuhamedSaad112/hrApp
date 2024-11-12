@@ -1,6 +1,7 @@
 package com.global.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -40,6 +41,12 @@ public class TaskServiceImpl implements TaskService {
 	public Task findById(Long id) {
 		log.debug("Request to get Task : {}", id);
 		return taskRepo.findById(id).orElse(null);
+	}
+
+	@Override
+	public Optional<Task> getById(Long id) {
+		log.debug("Request to Get Task from cash: {}", id);
+		return Optional.of(taskRepo.getReferenceById(id));
 	}
 
 	@Override

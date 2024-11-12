@@ -5,18 +5,18 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
-import com.global.dto.JobHistoryDto;
-import com.global.entity.JobHistory;
+import com.global.dto.JobDto;
+import com.global.entity.Job;
 
 @Mapper
 public interface JobMapper {
 
-	JobHistoryDto map(JobHistory entity);
+	JobDto map(Job entity);
 
-	List<JobHistoryDto> map(List<JobHistory> entities);
+	List<JobDto> map(List<Job> entities);
 
-	JobHistory unMap(JobHistoryDto dto);
+	Job unMap(JobDto dto);
 
-	JobHistory unMap(JobHistoryDto dto, @MappingTarget JobHistory entity);
+	Job unMap(JobDto dto, @MappingTarget Job entity);
 
 }

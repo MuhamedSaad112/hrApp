@@ -21,27 +21,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private final EmployeeRepo employeeRepo;
 
 	@Override
-	public Employee findById(Long id) {
-
-		return employeeRepo.findById(id).orElse(null);
-	}
-
-	@Override
-	public Optional<Employee> getByID(Long id) {
-		log.debug("Request to Get Employee : {}", id);
-		return employeeRepo.findById(id);
-	}
-
-	@Override
 	public Employee findByFirstNameAndLastNameOrderById(String firstName, String lastName) {
 		log.debug("Request to get  Employee by FirstName And LastName : {}:{}", firstName, lastName);
 		return employeeRepo.findByFirstNameAndLastNameOrderById(firstName, lastName);
-	}
-
-	@Override
-	public void delete(Long id) {
-		log.debug("Request to delete Employee : {}", id);
-		employeeRepo.deleteById(id);
 	}
 
 	@Override
@@ -52,7 +34,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee insert(Employee entity) {
+	public Employee save(Employee entity) {
 		log.debug("Request to save Employee : {}", entity);
 		return employeeRepo.save(entity);
 	}
@@ -64,4 +46,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeRepo.save(entity);
 	}
 
+	@Override
+	public Employee findById(Long id) {
+
+		return employeeRepo.findById(id).orElse(null);
+	}
+
+	@Override
+	public Optional<Employee> getById(Long id) {
+		log.debug("Request to Get Employee from cash: {}", id);
+		return Optional.of(employeeRepo.getReferenceById(id));
+	}
+
+	@Override
+	public void delete(Long id) {
+		log.debug("Request to delete Employee : {}", id);
+		employeeRepo.deleteById(id);
+	}
 }

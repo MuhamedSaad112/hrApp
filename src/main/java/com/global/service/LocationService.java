@@ -1,6 +1,7 @@
 package com.global.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.global.entity.Location;
 
@@ -21,6 +22,9 @@ public interface LocationService {
 	// Get the "id" Location
 
 	Location findById(Long id);
+
+	// Get the "id" Location from cash
+	public Optional<Location> getById(Long id);
 
 	// Delete the "id" Location.
 

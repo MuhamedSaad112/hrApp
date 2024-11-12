@@ -1,7 +1,9 @@
 package com.global.service.impl;
 
-import java.util.List;
+import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.global.entity.Department;
@@ -31,15 +33,21 @@ public class DepartmentServiceImpl implements DepartmentService {
 	}
 
 	@Override
-	public List<Department> findAll() {
+	public Page<Department> findAll(Pageable pageable) {
 		log.debug("Request to Get all departments");
-		return departmentRepo.findAll();
+		return departmentRepo.findAll(pageable);
 	}
 
 	@Override
 	public Department findById(Long id) {
 		log.debug("Request to Get department}", id);
 		return departmentRepo.findById(id).orElse(null);
+	}
+
+	@Override
+	public Optional<Department> getById(Long id) {
+		log.debug("Request to Get Employee  from cash : {}", id);
+		return Optional.of(departmentRepo.getReferenceById(id));
 	}
 
 	@Override

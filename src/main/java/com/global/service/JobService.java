@@ -1,6 +1,9 @@
 package com.global.service;
 
-import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.global.entity.Job;
 
@@ -16,11 +19,14 @@ public interface JobService {
 
 	// Get all the Job.
 
-	List<Job> findAll();
+	Page<Job> findAll(Pageable pageable);
 
 	// Get the "id" Job
 
 	Job findById(Long id);
+
+	// Get the "id" Job from cash
+	public Optional<Job> getById(Long id);
 
 	// Delete the "id" Job.
 
