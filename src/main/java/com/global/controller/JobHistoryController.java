@@ -25,6 +25,7 @@ import com.global.entity.JobHistory;
 import com.global.mapper.JobHistoryMapper;
 import com.global.service.JobHistoryService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -38,7 +39,7 @@ public class JobHistoryController {
 	private final JobHistoryMapper historyMapper;
 
 	@PostMapping()
-	public ResponseEntity<JobHistoryDto> save(@RequestBody JobHistoryDto dto) {
+	public ResponseEntity<JobHistoryDto> save(@Valid @RequestBody JobHistoryDto dto) {
 		log.debug("REST request to save JobHistory : {}", dto);
 
 		if (dto.getId() != null) {
@@ -73,7 +74,7 @@ public class JobHistoryController {
 	}
 
 	@PutMapping()
-	public ResponseEntity<JobHistoryDto> update(@RequestBody JobHistoryDto dto) {
+	public ResponseEntity<JobHistoryDto> update(@Valid @RequestBody JobHistoryDto dto) {
 		log.debug("REST request to partial update JobHistory partially : {}", dto);
 
 		JobHistory currentJobHistory = jobHistoryService.getById(dto.getId())

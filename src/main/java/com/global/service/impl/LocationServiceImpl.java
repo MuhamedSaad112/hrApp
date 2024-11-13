@@ -1,8 +1,9 @@
 package com.global.service.impl;
 
-import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.global.entity.Location;
@@ -32,9 +33,9 @@ public class LocationServiceImpl implements LocationService {
 	}
 
 	@Override
-	public List<Location> findAll() {
+	public Page<Location> findAll(Pageable pageable) {
 		log.debug("Request to Get list of locations");
-		return locationRepo.findAll();
+		return locationRepo.findAll(pageable);
 	}
 
 	@Override

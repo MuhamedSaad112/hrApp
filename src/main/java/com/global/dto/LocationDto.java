@@ -1,6 +1,7 @@
 package com.global.dto;
 
-import jakarta.validation.constraints.NotEmpty;
+import com.global.entity.Country;
+
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,15 +14,24 @@ import lombok.Setter;
 @NoArgsConstructor
 public class LocationDto {
 
+	@NotNull
 	private Long id;
 
-	@NotEmpty
-	private String jobTitle;
+	@NotNull
+	private String streetAddress;
 
 	@NotNull
-	private Long minSalary;
+	private String postalCode;
 
 	@NotNull
-	private Long maxSalary;
+	private String city;
+
+	@NotNull
+	private String stateProvince;
+
+	// Relationships
+
+	@NotNull
+	private Country country;
 
 }

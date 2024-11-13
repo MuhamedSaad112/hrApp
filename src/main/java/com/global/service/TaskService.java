@@ -1,7 +1,9 @@
 package com.global.service;
 
-import java.util.List;
 import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.global.entity.Task;
 
@@ -17,7 +19,7 @@ public interface TaskService {
 
 	// Get all the Task.
 
-	List<Task> findAll();
+	Page<Task> findAll(Pageable pageable);
 
 	// Get the "id" Task
 

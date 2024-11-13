@@ -1,6 +1,12 @@
 package com.global.dto;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import com.global.entity.Job;
+
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,5 +25,8 @@ public class TaskDto {
 
 	@NotEmpty
 	private String description;
+
+	@NotNull
+	private Set<Job> jobs = new HashSet<>();
 
 }

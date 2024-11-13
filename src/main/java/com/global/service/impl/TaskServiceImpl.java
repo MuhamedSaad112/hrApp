@@ -1,8 +1,9 @@
 package com.global.service.impl;
 
-import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.global.entity.Task;
@@ -32,9 +33,9 @@ public class TaskServiceImpl implements TaskService {
 	}
 
 	@Override
-	public List<Task> findAll() {
+	public Page<Task> findAll(Pageable pageable) {
 		log.debug("Request to get all Task ");
-		return taskRepo.findAll();
+		return taskRepo.findAll(pageable);
 	}
 
 	@Override

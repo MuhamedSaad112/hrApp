@@ -1,8 +1,9 @@
 package com.global.service.impl;
 
-import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.global.entity.Region;
@@ -32,9 +33,9 @@ public class RegionServiceImpl implements RegionService {
 	}
 
 	@Override
-	public List<Region> findAll() {
+	public Page<Region> findAll(Pageable pageable) {
 		log.debug("Request to get all  Regions");
-		return regionRepo.findAll();
+		return regionRepo.findAll(pageable);
 	}
 
 	@Override

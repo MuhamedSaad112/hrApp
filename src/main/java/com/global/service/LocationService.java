@@ -1,7 +1,9 @@
 package com.global.service;
 
-import java.util.List;
 import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.global.entity.Location;
 
@@ -17,7 +19,7 @@ public interface LocationService {
 
 	// Get all the Location.
 
-	List<Location> findAll();
+	Page<Location> findAll(Pageable pageable);
 
 	// Get the "id" Location
 
