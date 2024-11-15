@@ -1,4 +1,4 @@
-package com.global.mapper;
+package com.global.service;
 
 import java.util.Collections;
 import java.util.HashSet;
